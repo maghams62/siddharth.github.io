@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Siddharth Suresh — ML Engineer & Research-minded Builder</title>
+    <meta
+      name="description"
+      content="Portfolio website and resume-backed FAQ chatbot for Siddharth Suresh, an ML engineer and research-minded builder based in Santa Clara, CA."
+    />
+    <meta property="og:title" content="Siddharth Suresh — ML Engineer & Research-minded Builder" />
+    <meta
+      property="og:description"
+      content="Explore Siddharth Suresh’s highlights, experience, projects, and publications, plus a resume-backed chatbot."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://example.com" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><rect width='128' height='128' rx='24' fill='%231f2937'/><text x='64' y='82' font-size='72' text-anchor='middle' fill='white'>S</text></svg>"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased transition-colors dark:bg-slate-950 dark:text-slate-100">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:rounded-md focus:bg-yellow-300 focus:px-3 focus:py-2 focus:text-slate-900"
+      >Skip to content</a
+    >
+
+    <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+      <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" id="site-header">
+        <div class="flex items-center gap-8">
+          <a id="site-logo" class="text-lg font-semibold tracking-tight" href="#about" aria-label="Back to hero"></a>
+          <nav aria-label="Main">
+            <ul class="flex flex-wrap items-center gap-4 text-sm font-medium" id="site-nav"></ul>
+          </nav>
+        </div>
+        <div class="flex items-center gap-3">
+          <button
+            id="dark-toggle"
+            type="button"
+            class="rounded-full border border-slate-200 p-2 text-slate-600 transition hover:border-slate-300 hover:text-slate-900 dark:border-slate-700 dark:text-slate-300 dark:hover:border-slate-600 dark:hover:text-white"
+            aria-label="Toggle color mode"
+          >
+            <span aria-hidden="true" id="dark-toggle-icon">🌙</span>
+          </button>
+          <a
+            id="cv-button"
+            class="inline-flex items-center rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200 dark:focus-visible:outline-slate-200"
+            href="assets/Siddharth_Suresh_Resume.pdf"
+            download
+            >Download CV</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="mx-auto flex max-w-5xl flex-col gap-20 px-4 py-16 sm:px-6 lg:px-8">
+      <section id="about" class="grid gap-10 lg:grid-cols-[2fr,1fr] lg:items-start">
+        <div class="space-y-10" id="hero-content"></div>
+        <aside class="order-first flex justify-center lg:order-none">
+          <img
+            id="hero-avatar"
+            class="h-48 w-48 rounded-3xl border border-slate-200 object-cover shadow-lg dark:border-slate-800"
+            src="assets/avatar.jpg"
+            alt=""
+          />
+        </aside>
+      </section>
+
+      <section id="experience" aria-labelledby="experience-title">
+        <div class="mb-6 flex items-center justify-between gap-4">
+          <h2 class="text-2xl font-semibold tracking-tight" id="experience-title">Experience</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Tap each role to expand impact highlights.</p>
+        </div>
+        <div class="relative border-l border-slate-200 dark:border-slate-800" id="experience-timeline" aria-live="polite"></div>
+      </section>
+
+      <section id="projects" aria-labelledby="projects-title">
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold tracking-tight" id="projects-title">Projects</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Hands-on experiments and shipped systems.</p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2" id="projects-grid"></div>
+      </section>
+
+      <section id="patents" aria-labelledby="patents-title">
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold tracking-tight" id="patents-title">Patents</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Research contributions and intellectual property.</p>
+        </div>
+        <ul class="space-y-6" id="patents-list"></ul>
+      </section>
+
+      <section id="education" aria-labelledby="education-title">
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold tracking-tight" id="education-title">Education</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Academic background and relevant coursework.</p>
+        </div>
+        <div class="space-y-6" id="education-list"></div>
+      </section>
+
+      <section id="skills" aria-labelledby="skills-title">
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold tracking-tight" id="skills-title">Skills</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Stacks and specialties I reach for most.</p>
+        </div>
+        <div class="flex flex-wrap gap-2" id="skills-chips"></div>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title">
+        <div class="rounded-3xl border border-slate-200 bg-white p-10 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <h2 class="text-2xl font-semibold tracking-tight" id="contact-title">Contact</h2>
+          <p class="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300" id="contact-message"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+      <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-6 text-sm text-slate-500 sm:px-6 lg:px-8 dark:text-slate-400" id="site-footer"></div>
+    </footer>
+
+    <button
+      id="chat-launcher"
+      class="fixed bottom-6 right-6 flex h-14 w-14 items-center justify-center rounded-full bg-slate-900 text-white shadow-lg transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 dark:bg-slate-100 dark:text-slate-900"
+      type="button"
+      aria-label="Open resume chatbot"
+    >
+      💬
+    </button>
+
+    <section
+      id="chat-panel"
+      class="fixed bottom-24 right-6 hidden w-[min(360px,calc(100vw-2rem))] overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900"
+      aria-label="Resume Q&A chatbot"
+    >
+      <div class="flex h-96 flex-col">
+        <header class="flex items-start justify-between gap-2 border-b border-slate-200 px-4 py-3 dark:border-slate-800">
+          <div>
+            <h2 class="text-base font-semibold text-slate-900 dark:text-white">Ask about my resume</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Private, runs fully in your browser. Sources are shown.</p>
+          </div>
+          <button
+            type="button"
+            id="chat-close"
+            class="rounded-full border border-transparent p-1 text-slate-500 transition hover:border-slate-200 hover:text-slate-900 dark:hover:border-slate-700 dark:hover:text-white"
+            aria-label="Close chatbot"
+          >
+            ✕
+          </button>
+        </header>
+
+        <div id="chat-messages" class="flex-1 space-y-4 overflow-y-auto px-4 py-4 text-sm" role="log" aria-live="polite">
+          <div class="rounded-2xl bg-slate-100 px-3 py-2 text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+            Hi! Ask me something like “What did you build at WorkHack?” or “Which stacks have you shipped to prod?”
+          </div>
+        </div>
+
+        <form id="chat-form" class="border-t border-slate-200 bg-slate-50 px-3 py-3 dark:border-slate-800 dark:bg-slate-950">
+          <label for="chat-input" class="sr-only">Ask a question</label>
+          <div class="flex gap-2">
+            <input
+              id="chat-input"
+              name="chat-input"
+              type="text"
+              autocomplete="off"
+              placeholder="Ask a question..."
+              class="flex-1 rounded-full border border-slate-200 px-3 py-2 text-sm text-slate-900 transition placeholder:text-slate-400 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-slate-500 dark:focus:ring-slate-700"
+            />
+            <button
+              type="submit"
+              class="inline-flex items-center gap-1 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-slate-200 dark:focus-visible:outline-slate-200"
+            >
+              Send
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <script>
+      const themeStorageKey = 'site-color-scheme';
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+      function getStoredTheme() {
+        return localStorage.getItem(themeStorageKey);
+      }
+
+      function applyTheme(theme) {
+        const root = document.documentElement;
+        if (theme === 'dark') {
+          root.classList.add('dark');
+        } else {
+          root.classList.remove('dark');
+        }
+        localStorage.setItem(themeStorageKey, theme);
+        const icon = document.getElementById('dark-toggle-icon');
+        if (icon) {
+          icon.textContent = theme === 'dark' ? '🌞' : '🌙';
+        }
+      }
+
+      function initTheme() {
+        const stored = getStoredTheme();
+        if (stored) {
+          applyTheme(stored);
+        } else {
+          applyTheme(prefersDark.matches ? 'dark' : 'light');
+        }
+      }
+
+      prefersDark.addEventListener('change', (event) => {
+        const stored = getStoredTheme();
+        if (!stored) {
+          applyTheme(event.matches ? 'dark' : 'light');
+        }
+      });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initTheme();
+        const toggle = document.getElementById('dark-toggle');
+        if (toggle) {
+          toggle.addEventListener('click', () => {
+            const current = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+            applyTheme(current === 'dark' ? 'light' : 'dark');
+          });
+        }
+      });
+    </script>
+
+    <script>
+      // EDIT ME: Update your site data here.
+      window.SITE_DATA = {
+        profile: {
+          name: 'Siddharth Suresh',
+          headline: 'NLP & LLM Researcher | AI Engineer',
+          bio: [
+            'I build production-grade LLM systems with a focus on agentic workflows, retrieval-augmented generation, and human-in-the-loop orchestration.',
+            'Currently pursuing M.S. in Natural Language Processing at UC Santa Cruz while conducting research at Bosch on scientific discovery systems, tool-based reasoning, and generative SEO.',
+          ],
+          location: 'Santa Clara, CA',
+          email: 'ssures23@ucsc.edu',
+          phone: '+1 (661) 857-2957',
+          website: 'siddharth.github.io/siddharth.github.io',
+          links: [
+            { label: 'Email', href: 'mailto:ssures23@ucsc.edu' },
+            { label: 'LinkedIn', href: 'https://www.linkedin.com/in/siddharth-suresh-01924451/' },
+            { label: 'GitHub', href: 'https://siddharth.github.io/siddharth.github.io' },
+          ],
+          highlights: [
+            'Filed 3 patents at Bosch Research on tool-topology reasoning, generative SEO, and provenance-aware LLM pipelines.',
+            'Improved function-calling accuracy by ~7% on BFCL benchmark through structured tool topologies.',
+            'Reduced triage time by 40% using LangGraph-based human-in-the-loop agents for AppSec vulnerability detection.',
+          ],
+        },
+        experience: [
+          {
+            role: 'NLP and LLM Researcher (Intern)',
+            organization: 'Bosch',
+            location: 'Sunnyvale, CA',
+            start: 'Oct 2024',
+            end: 'Present',
+            bullets: [
+              'Built a deep research-based scientific discovery system enabling LLMs to investigate and verify claims using internet-scale retrieval, evidence synthesis, and structured re-ranking for automated knowledge discovery.',
+              'Designed structured tool topologies for task composition and multi-tool reasoning, improving function-calling accuracy by ~7% on the BFCL benchmark.',
+              'Built a generative SEO pipeline to influence LLM search ranking through structured content rewrites and prompt–output evaluation using learned model ranking heuristics.',
+            ],
+          },
+          {
+            role: 'Founding AI Engineer (Preseed to 7M)',
+            organization: 'Seezo.io',
+            location: 'Bengaluru, India',
+            start: 'Nov 2023',
+            end: 'Jun 2024',
+            bullets: [
+              'Built the orchestration layer for human-in-the-loop LLM agents for AppSec vulnerability detection using LangGraph, coordinating automated analysis and expert review; reduced triage time by 40%.',
+              'Created a retrieval-based analysis module to review code and architecture docs, producing context-aware insights and fix suggestions, raising detection accuracy by 35% on high-severity issues.',
+              'Implemented an MCP server connecting the agent system to CI/CD and GitHub PR workflows, delivering real-time vulnerability alerts and remediation actions.',
+            ],
+          },
+          {
+            role: 'Head of Technology (Preseed to 9M)',
+            organization: 'MetaForms',
+            location: 'Bengaluru, India',
+            start: 'Mar 2023',
+            end: 'Oct 2024',
+            bullets: [
+              'Post-trained Vicuna-13B → LLaMA-2-13B using LoRA (PEFT) with RLHF and DPO for reward-aligned, safety-focused fine-tuning, improving refusal accuracy on sensitive prompts by ~30%.',
+              'Applied ToolFormer-style fine-tuning to teach API usage patterns and parameterization, enabling controlled interactions with external services (WolframAlpha, Google Maps).',
+              'Built distributed inference pipelines using Ray Serve and TensorRT-LLM for large-scale model deployment.',
+            ],
+          },
+          {
+            role: 'Senior Data Scientist',
+            organization: 'Draup',
+            location: 'Bengaluru, India',
+            start: 'Oct 2020',
+            end: 'Mar 2023',
+            bullets: [
+              'Owned pre-training pipeline of a job-postings LM (GPT-J): engineered the data pipeline and led distributed training using PyTorch + DeepSpeed.',
+              'Served distilled models with Ray Serve + ONNX Runtime, reducing p95 latency by 30% and increasing throughput by 1.5× while cutting model size by 40% and retaining 98% accuracy.',
+            ],
+          },
+          {
+            role: 'Founding Machine Learning Engineer',
+            organization: 'Chefling',
+            location: 'Bengaluru / San Francisco',
+            start: 'Mar 2019',
+            end: 'Oct 2020',
+            bullets: [
+              'Built a content-based recipe recommender using Word2Vec ingredient embeddings (4k+) to construct a flavor graph for recipe personalization.',
+            ],
+          },
+          {
+            role: 'AI Engineer',
+            organization: 'SmartBeings (formerly WooHoo)',
+            location: 'Bengaluru, India',
+            start: 'Jan 2018',
+            end: 'Mar 2019',
+            bullets: [
+              'Built a Dialogflow-style enterprise chatbot platform in Python/Django with REST APIs and on-prem deployment.',
+              'Implemented XGBoost-based intent classification and custom entity training with cloud training jobs from user-provided examples.',
+            ],
+          },
+        ],
+        projects: [
+          {
+            title: 'Scientific Discovery System',
+            description: 'Deep research-based LLM system for automated knowledge discovery with internet-scale retrieval.',
+            tags: ['LLMs', 'RAG', 'Research'],
+          },
+          {
+            title: 'AppSec Agent Platform',
+            description: 'Human-in-the-loop LLM agents for vulnerability detection with LangGraph orchestration.',
+            tags: ['LangGraph', 'Security', 'Agents'],
+          },
+          {
+            title: 'Generative SEO Pipeline',
+            description: 'Framework for optimizing LLM search ranking through structured content rewrites.',
+            tags: ['SEO', 'LLMs', 'Optimization'],
+          },
+          {
+            title: 'Distributed LLM Inference',
+            description: 'Production inference pipelines using Ray Serve and TensorRT-LLM.',
+            tags: ['Ray Serve', 'TensorRT', 'PyTorch'],
+          },
+        ],
+        patents: [
+          {
+            title: 'Tool Topology Enhanced Large Language Models: Tool-Based Reasoning Capabilities',
+            patentNo: '2025/7289',
+            organization: 'Bosch Global Research',
+            year: '2025',
+            filed: 'Sep 2025',
+            note: 'Introduces structured tool-topology design enabling multi-tool reasoning, compositional planning, and error-tolerant execution.',
+          },
+          {
+            title: 'Generative Engine Optimization Framework for Brand Visibility in LLM-Based Recommendations',
+            patentNo: '2025/8008',
+            organization: 'Bosch Global Research',
+            year: '2025',
+            filed: 'Oct 2025',
+            note: 'Framework optimizing LLM-driven recommendations for brand visibility through generative query rewriting and alignment signals.',
+          },
+          {
+            title: 'From Heterogeneous Food Data to a Provenance-Aware Ingredient–Nutrient–Recipe Index',
+            patentNo: '2025/8007',
+            organization: 'Bosch Global Research',
+            year: '2025',
+            filed: 'Oct 2025',
+            note: 'Provenance-aware LLM pipeline integrating ingredient, nutrient, and recipe data from heterogeneous sources for nutrition verification.',
+          },
+        ],
+        skills: [
+          'Python',
+          'C++',
+          'Rust',
+          'PySpark',
+          'PyTorch',
+          'PEFT (LoRA/QLoRA)',
+          'ONNX Runtime',
+          'LangGraph',
+          'AutoGen',
+          'Ray Serve',
+          'vLLM',
+          'TensorRT-LLM',
+          'DeepSpeed',
+          'PostgreSQL',
+          'MongoDB',
+          'Qdrant',
+          'Pinecone',
+          'BM25',
+          'ColBERT',
+          'SPLADE',
+          'FAISS',
+          'Annoy',
+          'HNSW',
+          'ScaNN',
+          'ReRankers',
+          'Multi-agent coordination',
+          'Memory management',
+          'Context routing',
+        ],
+        education: [
+          {
+            degree: 'M.S. in Natural Language Processing',
+            institution: 'University of California, Santa Cruz (UCSC)',
+            location: 'Santa Cruz, CA',
+            start: 'Sept 2024',
+            end: 'Dec 2025 (Expected)',
+            coursework: [
+              'Probabilistic Graphical Models',
+              'Transformer Architectures & Scaling Laws',
+              'Statistical NLP',
+              'Reinforcement Learning from Human Feedback',
+              'Interpretability & Alignment',
+              'Distributed Model Training',
+            ],
+          },
+          {
+            degree: 'B.Tech. in Computer Science and Engineering',
+            institution: 'SRM Institute of Science and Technology',
+            location: 'Chennai, India',
+            start: 'June 2013',
+            end: 'May 2017',
+            coursework: [
+              'Machine Learning',
+              'Deep Learning',
+              'Data Structures',
+              'Operating Systems',
+              'Distributed Systems',
+            ],
+          },
+        ],
+        contact: {
+          message:
+            'Interested in building grounded, observable AI workflows or scaling retrieval infrastructure? Let's talk — drop a note at <a class="underline decoration-dotted hover:decoration-solid" href="mailto:ssures23@ucsc.edu">ssures23@ucsc.edu</a>.',
+        },
+        seo: {
+          url: 'https://siddharthsuresh.github.io/',
+        },
+      };
+    </script>
+
+    <script>
+      (function renderSite() {
+        const data = window.SITE_DATA;
+        if (!data) {
+          console.error('SITE_DATA is missing.');
+          return;
+        }
+
+        document.title = `${data.profile.name} — ${data.profile.headline}`;
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc) {
+          desc.setAttribute(
+            'content',
+            `Portfolio website for ${data.profile.name}: ${data.profile.headline} based in ${data.profile.location}.`
+          );
+        }
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) {
+          ogTitle.setAttribute('content', `${data.profile.name} — ${data.profile.headline}`);
+        }
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) {
+          ogDesc.setAttribute(
+            'content',
+            `Explore ${data.profile.name}’s highlights, experience, projects, and publications, plus a resume-backed chatbot.`
+          );
+        }
+        const siteUrl = data.seo?.url || window.location.href;
+        const ogUrl = document.querySelector('meta[property="og:url"]');
+        if (ogUrl) {
+          ogUrl.setAttribute('content', siteUrl);
+        }
+
+        const locationParts = (data.profile.location || '').split(',').map((part) => part.trim()).filter(Boolean);
+        const address = {
+          '@type': 'PostalAddress',
+        };
+        if (locationParts[0]) {
+          address.addressLocality = locationParts[0];
+        }
+        if (locationParts[1]) {
+          address.addressRegion = locationParts[1];
+        }
+        if (locationParts[2]) {
+          address.addressCountry = locationParts[2];
+        }
+        const sameAs = (data.profile.links || [])
+          .map((link) => link.href)
+          .filter((href) => typeof href === 'string' && href.startsWith('http'));
+        const jsonLd = {
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: data.profile.name,
+          jobTitle: data.profile.headline,
+          email: `mailto:${data.profile.email}`,
+          url: siteUrl,
+        };
+        if (Object.keys(address).length > 1) {
+          jsonLd.address = address;
+        }
+        if (sameAs.length) {
+          jsonLd.sameAs = sameAs;
+        }
+        const schemaEl = document.getElementById('person-schema');
+        if (schemaEl) {
+          schemaEl.textContent = JSON.stringify(jsonLd, null, 2);
+        }
+
+        const logo = document.getElementById('site-logo');
+        if (logo) {
+          logo.textContent = data.profile.name.split(' ')[0];
+        }
+
+        const navItems = [
+          { id: 'about', label: 'About' },
+          { id: 'experience', label: 'Experience' },
+          { id: 'projects', label: 'Projects' },
+          { id: 'patents', label: 'Patents' },
+          { id: 'education', label: 'Education' },
+          { id: 'skills', label: 'Skills' },
+          { id: 'contact', label: 'Contact' },
+        ];
+        const navEl = document.getElementById('site-nav');
+        if (navEl) {
+          navEl.innerHTML = navItems
+            .map(
+              (item) =>
+                `<li><a class="rounded-full px-3 py-1 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-200 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white dark:focus-visible:outline-slate-700" href="#${item.id}">${item.label}</a></li>`
+            )
+            .join('');
+        }
+
+        const heroContent = document.getElementById('hero-content');
+        if (heroContent) {
+          const heroHTML = `
+            <div>
+              <span class="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">About</span>
+              <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+                ${data.profile.name}
+              </h1>
+              <p class="mt-2 text-xl text-slate-600 dark:text-slate-300">${data.profile.headline}</p>
+              <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">${data.profile.location}</p>
+            </div>
+            <div class="space-y-4">
+              ${data.profile.bio
+                .map((paragraph) => `<p class="text-base leading-relaxed text-slate-600 dark:text-slate-300">${paragraph}</p>`)
+                .join('')}
+            </div>
+            <div class="flex flex-wrap items-center gap-3 text-sm font-medium">
+              ${data.profile.links
+                .map(
+                  (link) =>
+                    `<a class="inline-flex items-center gap-1 rounded-full border border-slate-200 px-3 py-1 text-slate-700 transition hover:bg-slate-100 hover:text-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-200 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white dark:focus-visible:outline-slate-700" href="${link.href}" target="${
+                      link.href.startsWith('http') ? '_blank' : '_self'
+                    }" rel="${link.href.startsWith('http') ? 'noopener noreferrer' : ''}">${link.label}</a>`
+                )
+                .join('')}
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Highlights</h3>
+              <ul class="mt-3 space-y-2 text-base text-slate-600 dark:text-slate-300">
+                ${data.profile.highlights
+                  .map((highlight) => `<li class="flex gap-3"><span class="mt-1 h-2 w-2 flex-none rounded-full bg-slate-400 dark:bg-slate-500"></span><span>${highlight}</span></li>`)
+                  .join('')}
+              </ul>
+            </div>
+          `;
+          heroContent.innerHTML = heroHTML;
+        }
+
+        const timelineEl = document.getElementById('experience-timeline');
+        if (timelineEl) {
+          timelineEl.innerHTML = data.experience
+            .map((item, index) => {
+              const detailId = `experience-details-${index}`;
+              return `
+                <article class="relative ml-6 pb-10">
+                  <span class="absolute -left-8 top-2 flex h-4 w-4 items-center justify-center rounded-full border-2 border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900"></span>
+                  <button
+                    class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-left shadow-sm transition hover:border-slate-300 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-slate-600 dark:focus-visible:outline-slate-700"
+                    aria-expanded="false"
+                    aria-controls="${detailId}"
+                    data-experience-toggle="${detailId}"
+                  >
+                    <div class="flex flex-wrap items-baseline justify-between gap-2">
+                      <div>
+                        <h3 class="text-lg font-semibold text-slate-900 dark:text-white">${item.role}</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">${item.organization}${item.location ? ` · ${item.location}` : ''}</p>
+                      </div>
+                      <p class="text-sm font-medium text-slate-500 dark:text-slate-400">${item.start} – ${item.end}</p>
+                    </div>
+                  </button>
+                  <div class="hidden px-4 pb-2 pt-4 text-sm text-slate-600 dark:text-slate-300" id="${detailId}">
+                    <ul class="space-y-2">
+                      ${item.bullets
+                        .map(
+                          (bullet) =>
+                            `<li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-slate-400 dark:bg-slate-500"></span><span>${bullet}</span></li>`
+                        )
+                        .join('')}
+                    </ul>
+                  </div>
+                </article>
+              `;
+            })
+            .join('');
+        }
+
+        const projectsEl = document.getElementById('projects-grid');
+        if (projectsEl) {
+          projectsEl.innerHTML = data.projects
+            .map((project) => {
+              const tags = project.tags
+                .map(
+                  (tag) =>
+                    `<span class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">${tag}</span>`
+                )
+                .join('');
+              const link = project.link
+                ? `<a class="text-sm font-semibold text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-500 dark:text-white dark:decoration-slate-600 dark:hover:decoration-slate-400" href="${project.link.href}" target="_blank" rel="noopener noreferrer">${project.link.label || 'Learn more'}</a>`
+                : '';
+              return `
+                <article class="flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-slate-300 hover:shadow-md dark:border-slate-700 dark:bg-slate-900 dark:hover:border-slate-600">
+                  <div>
+                    <h3 class="text-lg font-semibold text-slate-900 dark:text-white">${project.title}</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">${project.description}</p>
+                  </div>
+                  <div class="flex flex-wrap gap-2">${tags}</div>
+                  ${link ? `<div>${link}</div>` : ''}
+                </article>
+              `;
+            })
+            .join('');
+        }
+
+        const patentsEl = document.getElementById('patents-list');
+        if (patentsEl) {
+          patentsEl.innerHTML = data.patents
+            .map(
+              (patent) => `
+                <li class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+                  <h3 class="text-lg font-semibold text-slate-900 dark:text-white">${patent.title}</h3>
+                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Patent No. ${patent.patentNo} — ${patent.organization}</p>
+                  <p class="mt-1 text-sm font-medium text-slate-600 dark:text-slate-300">Filed: ${patent.filed}</p>
+                  ${patent.note ? `<p class="mt-3 text-sm text-slate-600 dark:text-slate-300">${patent.note}</p>` : ''}
+                </li>
+              `
+            )
+            .join('');
+        }
+
+        const educationEl = document.getElementById('education-list');
+        if (educationEl) {
+          educationEl.innerHTML = data.education
+            .map(
+              (edu) => `
+                <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+                  <div class="flex flex-wrap items-baseline justify-between gap-2">
+                    <div>
+                      <h3 class="text-lg font-semibold text-slate-900 dark:text-white">${edu.degree}</h3>
+                      <p class="text-sm text-slate-500 dark:text-slate-400">${edu.institution}${edu.location ? ` · ${edu.location}` : ''}</p>
+                    </div>
+                    <p class="text-sm font-medium text-slate-500 dark:text-slate-400">${edu.start} – ${edu.end}</p>
+                  </div>
+                  ${edu.coursework && edu.coursework.length > 0 ? `
+                    <div class="mt-4">
+                      <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">Relevant Coursework</p>
+                      <div class="mt-2 flex flex-wrap gap-2">
+                        ${edu.coursework.map(course => `<span class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">${course}</span>`).join('')}
+                      </div>
+                    </div>
+                  ` : ''}
+                </article>
+              `
+            )
+            .join('');
+        }
+
+        const skillsEl = document.getElementById('skills-chips');
+        if (skillsEl) {
+          skillsEl.innerHTML = data.skills
+            .map(
+              (skill) =>
+                `<span class="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-sm font-medium text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">${skill}</span>`
+            )
+            .join('');
+        }
+
+        const contactEl = document.getElementById('contact-message');
+        if (contactEl) {
+          contactEl.innerHTML = data.contact.message;
+        }
+
+        const footerEl = document.getElementById('site-footer');
+        if (footerEl) {
+          const year = new Date().getFullYear();
+          footerEl.innerHTML = `
+            <span>&copy; ${year} ${data.profile.name}</span>
+            <a href="#about" class="inline-flex items-center gap-1 text-sm font-medium text-slate-600 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-500 dark:text-slate-300 dark:decoration-slate-600 dark:hover:decoration-slate-400">Back to top ↑</a>
+          `;
+        }
+
+        document.querySelectorAll('[data-experience-toggle]').forEach((button) => {
+          button.addEventListener('click', () => {
+            const targetId = button.getAttribute('data-experience-toggle');
+            if (!targetId) return;
+            const panel = document.getElementById(targetId);
+            if (!panel) return;
+            const expanded = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', String(!expanded));
+            panel.classList.toggle('hidden', expanded);
+          });
+        });
+      })();
+    </script>
+
+    <script type="application/ld+json" id="person-schema">
+      {}
+    </script>
+
+    <script>
+      (function initChatbot() {
+        const launcher = document.getElementById('chat-launcher');
+        const panel = document.getElementById('chat-panel');
+        const closeBtn = document.getElementById('chat-close');
+        const form = document.getElementById('chat-form');
+        const input = document.getElementById('chat-input');
+        const messages = document.getElementById('chat-messages');
+
+        const HF_ENDPOINT = 'https://maghams62-resume-chat-new.hf.space/run/predict';
+        let pendingMessageEl = null;
+        let currentAbortController = null;
+
+        function appendMessage(content, role = 'assistant') {
+          const wrapper = document.createElement('div');
+          const isUser = role === 'user';
+          wrapper.className = isUser
+            ? 'ml-auto max-w-[80%] rounded-2xl bg-slate-900 px-3 py-2 text-sm text-white dark:bg-slate-100 dark:text-slate-900'
+            : 'mr-auto max-w-[90%] space-y-3 rounded-2xl bg-slate-100 px-3 py-2 text-sm text-slate-700 dark:bg-slate-800 dark:text-slate-200';
+          if (typeof content === 'string') {
+            wrapper.textContent = content;
+          } else {
+            wrapper.appendChild(content);
+          }
+          messages.appendChild(wrapper);
+          messages.scrollTop = messages.scrollHeight;
+          return wrapper;
+        }
+
+        function buildSourcesList(results) {
+          const container = document.createElement('div');
+          container.className = 'space-y-2';
+          const answerText = document.createElement('p');
+          answerText.className = 'leading-relaxed';
+          answerText.textContent = results.answer || 'I could not produce an answer.';
+          container.appendChild(answerText);
+
+          const sources = Array.isArray(results.sources) ? results.sources : [];
+          const contextUsed = Array.isArray(results.context || results.context_used) ? (results.context || results.context_used) : [];
+
+          if (sources.length > 0 || contextUsed.length > 0) {
+            const toggleBtn = document.createElement('button');
+            toggleBtn.type = 'button';
+            toggleBtn.textContent = 'Sources';
+            toggleBtn.className =
+              'text-xs font-semibold uppercase tracking-wide text-slate-500 underline decoration-dotted underline-offset-4 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200';
+            toggleBtn.setAttribute('aria-expanded', 'false');
+
+            const list = document.createElement('ul');
+            list.className = 'mt-2 hidden space-y-2 border-t border-slate-200 pt-2 text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400';
+
+            sources.forEach((source, index) => {
+              const item = document.createElement('li');
+              item.innerHTML = `<strong>Chunk ${index + 1}:</strong> ${source}`;
+              list.appendChild(item);
+            });
+
+            if (sources.length === 0 && contextUsed.length > 0) {
+              contextUsed.forEach((snippet, index) => {
+                const item = document.createElement('li');
+                item.innerHTML = `<strong>Context ${index + 1}:</strong> ${snippet}`;
+                list.appendChild(item);
+              });
+            }
+
+            toggleBtn.addEventListener('click', () => {
+              const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+              toggleBtn.setAttribute('aria-expanded', String(!isExpanded));
+              list.classList.toggle('hidden', isExpanded);
+            });
+
+            container.appendChild(toggleBtn);
+            container.appendChild(list);
+          }
+          return container;
+        }
+
+        function callRemoteChat(question, signal) {
+          return fetch(HF_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ data: [question] }),
+            signal,
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`Remote chatbot failed (${response.status})`);
+              }
+              return response.json();
+            })
+            .then((payload) => {
+              const data = Array.isArray(payload?.data) ? payload.data[0] : null;
+              if (!data || typeof data !== 'object') {
+                throw new Error('Unexpected response format.');
+              }
+              return {
+                answer: data.answer || '',
+                sources: Array.isArray(data.sources) ? data.sources : [],
+                context: Array.isArray(data.context_used) ? data.context_used : [],
+              };
+            });
+        }
+
+        function handleSubmit(event) {
+          event.preventDefault();
+          const query = input.value.trim();
+          if (!query) return;
+          appendMessage(query, 'user');
+          input.value = '';
+
+          if (currentAbortController) {
+            currentAbortController.abort();
+          }
+          currentAbortController = new AbortController();
+
+          if (pendingMessageEl) {
+            pendingMessageEl.remove();
+            pendingMessageEl = null;
+          }
+          pendingMessageEl = appendMessage('Thinking…', 'assistant');
+
+          callRemoteChat(query, currentAbortController.signal)
+            .then((result) => {
+              if (pendingMessageEl) {
+                pendingMessageEl.remove();
+                pendingMessageEl = null;
+              }
+              appendMessage(buildSourcesList(result), 'assistant');
+            })
+            .catch((error) => {
+              if (pendingMessageEl) {
+                pendingMessageEl.remove();
+                pendingMessageEl = null;
+              }
+              if (error.name === 'AbortError') {
+                return;
+              }
+              console.error(error);
+              appendMessage('Something went wrong reaching the resume chatbot. Please try again in a moment.', 'assistant');
+            })
+            .finally(() => {
+              currentAbortController = null;
+            });
+        }
+
+        function openPanel() {
+          panel.classList.remove('hidden');
+          panel.setAttribute('aria-hidden', 'false');
+          input?.focus();
+        }
+
+        function closePanel() {
+          panel.classList.add('hidden');
+          panel.setAttribute('aria-hidden', 'true');
+          launcher.focus();
+        }
+
+        launcher?.addEventListener('click', () => {
+          if (panel.classList.contains('hidden')) {
+            openPanel();
+          } else {
+            closePanel();
+          }
+        });
+
+        closeBtn?.addEventListener('click', closePanel);
+        form?.addEventListener('submit', handleSubmit);
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && !panel.classList.contains('hidden')) {
+            closePanel();
+          }
+          if (event.key === 'Enter' && event.metaKey && !panel.classList.contains('hidden')) {
+            form?.requestSubmit();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

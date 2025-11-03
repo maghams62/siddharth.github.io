@@ -1,0 +1,10 @@
+.DS_Store
+node_modules/
+*.log
+.env
+tmprepo/
+hf/
+instructions.md
+siddharth_resume_final.pdf
+Resume_siddharth.pdf
+test.py
