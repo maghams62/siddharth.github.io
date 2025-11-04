@@ -456,7 +456,7 @@
     </script>
 
     <script>
-      (function renderSite() {
+      document.addEventListener('DOMContentLoaded', function renderSite() {
         const data = window.SITE_DATA;
         if (!data) {
           console.error('SITE_DATA is missing.');
@@ -728,7 +728,7 @@
             panel.classList.toggle('hidden', expanded);
           });
         });
-      })();
+      });
     </script>
 
     <script type="application/ld+json" id="person-schema">
