@@ -113,12 +113,36 @@
         <div class="space-y-6" id="education-list"></div>
       </section>
 
+      <section id="beliefs" aria-labelledby="beliefs-title">
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold tracking-tight" id="beliefs-title">What I Believe In</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400">How 0→1 journeys shaped how I work.</p>
+        </div>
+        <div class="space-y-4" id="beliefs-content"></div>
+      </section>
+
+      <section id="learnings-2025" aria-labelledby="learnings-2025-title">
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold tracking-tight" id="learnings-2025-title">Things I’ve Learned in 2025</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400">A few notes I keep coming back to.</p>
+        </div>
+        <ul class="space-y-3" id="learnings-2025-list"></ul>
+      </section>
+
       <section id="skills" aria-labelledby="skills-title">
         <div class="mb-6">
           <h2 class="text-2xl font-semibold tracking-tight" id="skills-title">Skills</h2>
           <p class="text-sm text-slate-500 dark:text-slate-400">Stacks and specialties I reach for most.</p>
         </div>
         <div class="flex flex-wrap gap-2" id="skills-chips"></div>
+      </section>
+
+      <section id="verticals" aria-labelledby="verticals-title">
+        <div class="mb-6">
+          <h2 class="text-2xl font-semibold tracking-tight" id="verticals-title">Verticals I’ve Worked Across</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Domains where I’ve shipped and iterated.</p>
+        </div>
+        <ul class="space-y-2" id="verticals-list"></ul>
       </section>
 
       <section id="contact" aria-labelledby="contact-title">
@@ -246,10 +270,11 @@
       window.SITE_DATA = {
         profile: {
           name: 'Siddharth Suresh',
-          headline: 'NLP & LLM Researcher | AI Engineer',
+          headline: 'AI researcher & engineer building deep-retrieval, verification, and orchestration systems for the next wave of agents.',
           bio: [
-            'I build production-grade LLM and retrieval systems, with a focus on agentic workflows and human-in-the-loop orchestration.',
-            'Currently pursuing an M.S. in Natural Language Processing at UC Santa Cruz while working on research at Bosch around scientific discovery systems, tool-based reasoning, and generative SEO.',
+            'I’m an AI researcher with 6 years of experience.',
+            'My current area of research is deep-retrieval, verification, and multi-agent orchestration — basically teaching LLMs how to crawl, verify, and reason.',
+            'Over the years I’ve picked up a strong “build more with less” mindset and a good understanding of end-to-end system architecture. I’m comfortable going from data and training pipelines to retrieval, orchestration, and deployment when the problem demands it.',
           ],
           location: 'Santa Clara, CA',
           email: 'ssures23@ucsc.edu',
@@ -337,6 +362,26 @@
           },
         ],
         projects: [
+          {
+            title: 'SimPulse (Inspiration: AgentWeb)',
+            description:
+              'A tool for CMOs to preview how their post will perform before publishing. We built a fully simulated social-engagement environment where ~200 diverse personas across X, Reddit/HN, and LinkedIn organically debate a campaign — surfacing sentiment, objections, talking points, and an auto-rewritten version optimized for virality.',
+            tags: ['Agents', 'Simulation', 'Marketing'],
+            link: {
+              href: 'https://www.linkedin.com/posts/siddharth-suresh-01924451_youre-the-marketing-manager-at-apple-activity-7396687470685405185-a15Y',
+              label: 'Full post & demo',
+            },
+          },
+          {
+            title: 'Cerebros',
+            description:
+              'An ongoing initiative to build a smarter Siri/Raycast — essentially letting me “talk to my Mac.” It’s a multi-agent system with its own tool-calling layer, flow builder, and orchestrator that automates email, browser actions, app control, and system tasks through a custom Mac MCP built from scratch using LangGraph.',
+            tags: ['Agents', 'LangGraph', 'MCP'],
+            link: {
+              href: 'https://www.youtube.com/watch?v=g9PY_HKNFp0',
+              label: 'Demo',
+            },
+          },
           {
             title: 'Scientific Discovery System',
             description: 'Deep research-based LLM system for automated knowledge discovery with internet-scale retrieval.',
@@ -445,6 +490,34 @@
             ],
           },
         ],
+        beliefs: {
+          intro:
+            'Spending most of my career in 0→1 environments shaped how I think about work:',
+          bullets: [
+            'Build more with less.',
+            'Move fast, but don’t be sloppy.',
+            'Solve genuinely hard problems with small, fast teams.',
+            'Use healthy conflict to get to better ideas, not bigger egos.',
+          ],
+          outro:
+            'I thrive in hungry, high-ownership teams that care about the craft, enjoy debating ideas, and are still down for a coffee, beer, or FIFA match right after.',
+        },
+        lessons2025: [
+          'Don’t shy away from conflict — especially if it’s about something you genuinely believe in. Healthy disagreement sharpens ideas.',
+          'Vibecoding is a real skill. It’s hard, but the payoff is massive when you get it right.',
+          'Build fast, verify slower. Speed gets you to the frontier; verification keeps you alive there.',
+          'Be more kind. You move faster when the people around you feel safe, respected, and supported.',
+        ],
+        verticals: [
+          'Scientific discovery and deep-retrieval systems',
+          'Agentic systems and tool-use orchestration (LangGraph, multi-tool flows)',
+          'Application security (automating Security Design Reviews and vulnerability detection)',
+          'Sales and customer-engagement conversational AI',
+          'Generative SEO / “Generative Engine Optimization” for LLM ranking and brand visibility',
+          'Distributed training and inference infrastructure (DeepSpeed, Ray Serve, vLLM, TensorRT-LLM)',
+          'Recommender systems and personalization (e.g., flavor graphs / recipe recommendation)',
+          'Enterprise NLP: chatbots, intent classification, entity extraction, retrieval-based Q&A',
+        ],
         contact: {
           message:
             "Interested in building grounded, observable AI workflows or scaling retrieval infrastructure? Let's talk — drop a note at <a class=\"underline decoration-dotted hover:decoration-solid\" href=\"mailto:ssures23@ucsc.edu\">ssures23@ucsc.edu</a>.",
@@ -534,7 +607,10 @@
           { id: 'projects', label: 'Projects' },
           { id: 'patents', label: 'Patents' },
           { id: 'education', label: 'Education' },
+          { id: 'beliefs', label: 'Beliefs' },
+          { id: 'learnings-2025', label: '2025 Notes' },
           { id: 'skills', label: 'Skills' },
+          { id: 'verticals', label: 'Verticals' },
           { id: 'contact', label: 'Contact' },
         ];
         const navEl = document.getElementById('site-nav');
@@ -724,12 +800,59 @@
             .join('');
         }
 
+        const beliefsEl = document.getElementById('beliefs-content');
+        if (beliefsEl && data.beliefs) {
+          const parts = [];
+          if (data.beliefs.intro) {
+            parts.push(
+              `<p class="text-base leading-relaxed text-slate-600 dark:text-slate-300">${data.beliefs.intro}</p>`
+            );
+          }
+          if (Array.isArray(data.beliefs.bullets) && data.beliefs.bullets.length > 0) {
+            const items = data.beliefs.bullets
+              .map(
+                (item) =>
+                  `<li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-slate-400 dark:bg-slate-500"></span><span>${item}</span></li>`
+              )
+              .join('');
+            parts.push(
+              `<ul class="mt-3 space-y-2 text-base text-slate-600 dark:text-slate-300">${items}</ul>`
+            );
+          }
+          if (data.beliefs.outro) {
+            parts.push(
+              `<p class="text-base leading-relaxed text-slate-600 dark:text-slate-300">${data.beliefs.outro}</p>`
+            );
+          }
+          beliefsEl.innerHTML = parts.join('');
+        }
+
+        const lessonsEl = document.getElementById('learnings-2025-list');
+        if (lessonsEl && Array.isArray(data.lessons2025)) {
+          lessonsEl.innerHTML = data.lessons2025
+            .map(
+              (lesson) =>
+                `<li class="flex gap-3 text-base text-slate-600 dark:text-slate-300"><span class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-slate-400 dark:bg-slate-500"></span><span>${lesson}</span></li>`
+            )
+            .join('');
+        }
+
         const skillsEl = document.getElementById('skills-chips');
         if (skillsEl) {
           skillsEl.innerHTML = data.skills
             .map(
               (skill) =>
                 `<span class="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-sm font-medium text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">${skill}</span>`
+            )
+            .join('');
+        }
+
+        const verticalsEl = document.getElementById('verticals-list');
+        if (verticalsEl && Array.isArray(data.verticals)) {
+          verticalsEl.innerHTML = data.verticals
+            .map(
+              (vertical) =>
+                `<li class="flex gap-3 text-base text-slate-600 dark:text-slate-300"><span class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-slate-400 dark:bg-slate-500"></span><span>${vertical}</span></li>`
             )
             .join('');
         }
