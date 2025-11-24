@@ -248,8 +248,8 @@
           name: 'Siddharth Suresh',
           headline: 'NLP & LLM Researcher | AI Engineer',
           bio: [
-            'I build production-grade LLM systems with a focus on agentic workflows, retrieval-augmented generation, and human-in-the-loop orchestration.',
-            'Currently pursuing M.S. in Natural Language Processing at UC Santa Cruz while conducting research at Bosch on scientific discovery systems, tool-based reasoning, and generative SEO.',
+            'I build production-grade LLM and retrieval systems, with a focus on agentic workflows and human-in-the-loop orchestration.',
+            'Currently pursuing an M.S. in Natural Language Processing at UC Santa Cruz while working on research at Bosch around scientific discovery systems, tool-based reasoning, and generative SEO.',
           ],
           location: 'Santa Clara, CA',
           email: 'ssures23@ucsc.edu',
@@ -271,8 +271,8 @@
             role: 'NLP and LLM Researcher (Intern)',
             organization: 'Bosch',
             location: 'Sunnyvale, CA',
-            start: 'Oct 2024',
-            end: 'Present',
+            start: 'June 2025',
+            end: 'Oct 2025',
             bullets: [
               'Built a deep research-based scientific discovery system enabling LLMs to investigate and verify claims using internet-scale retrieval, evidence synthesis, and structured re-ranking for automated knowledge discovery.',
               'Designed structured tool topologies for task composition and multi-tool reasoning, improving function-calling accuracy by ~7% on the BFCL benchmark.',
@@ -292,15 +292,15 @@
             ],
           },
           {
-            role: 'Head of Technology (Preseed to 9M)',
+            role: 'Head of AI Research (Preseed to 9M)',
             organization: 'MetaForms',
             location: 'Bengaluru, India',
             start: 'Mar 2023',
-            end: 'Oct 2024',
+            end: 'Oct 2023',
             bullets: [
-              'Post-trained Vicuna-13B → LLaMA-2-13B using LoRA (PEFT) with RLHF and DPO for reward-aligned, safety-focused fine-tuning, improving refusal accuracy on sensitive prompts by ~30%.',
+              'Post-trained Vicuna-13B using LoRA (PEFT) with RLHF and DPO for reward-aligned, safety-focused fine-tuning, improving refusal accuracy on sensitive prompts by ~30%.',
               'Applied ToolFormer-style fine-tuning to teach API usage patterns and parameterization, enabling controlled interactions with external services (WolframAlpha, Google Maps).',
-              'Built distributed inference pipelines using Ray Serve and TensorRT-LLM for large-scale model deployment.',
+              'Built distributed inference pipelines using Ray Serve for large-scale model deployment.',
             ],
           },
           {
@@ -387,21 +387,24 @@
         skills: [
           'Python',
           'C++',
-          'Rust',
+          'Rust (vibe-coded)',
           'PySpark',
-          'PyTorch',
-          'PEFT (LoRA/QLoRA)',
-          'ONNX Runtime',
-          'LangGraph',
-          'AutoGen',
-          'Ray Serve',
-          'vLLM',
-          'TensorRT-LLM',
-          'DeepSpeed',
           'PostgreSQL',
           'MongoDB',
           'Qdrant',
           'Pinecone',
+          'LangGraph',
+          'AutoGen',
+          'Multi-agent coordination',
+          'Memory management',
+          'Context routing',
+          'Ray Serve',
+          'vLLM',
+          'TensorRT-LLM',
+          'DeepSpeed',
+          'PyTorch',
+          'PEFT (LoRA/QLoRA)',
+          'ONNX Runtime',
           'BM25',
           'ColBERT',
           'SPLADE',
@@ -409,10 +412,7 @@
           'Annoy',
           'HNSW',
           'ScaNN',
-          'ReRankers',
-          'Multi-agent coordination',
-          'Memory management',
-          'Context routing',
+          'ReRankers (Cross-Encoder, MonoT5)',
         ],
         education: [
           {
@@ -587,38 +587,72 @@
 
         const timelineEl = document.getElementById('experience-timeline');
         if (timelineEl) {
-          timelineEl.innerHTML = data.experience
-            .map((item, index) => {
-              const detailId = `experience-details-${index}`;
-              return `
-                <article class="relative ml-6 pb-10">
-                  <span class="absolute -left-8 top-2 flex h-4 w-4 items-center justify-center rounded-full border-2 border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900"></span>
-                  <button
-                    class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-left shadow-sm transition hover:border-slate-300 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-slate-600 dark:focus-visible:outline-slate-700"
-                    aria-expanded="false"
-                    aria-controls="${detailId}"
-                    data-experience-toggle="${detailId}"
-                  >
-                    <div class="flex flex-wrap items-baseline justify-between gap-2">
-                      <div>
-                        <h3 class="text-lg font-semibold text-slate-900 dark:text-white">${item.role}</h3>
-                        <p class="text-sm text-slate-500 dark:text-slate-400">${item.organization}${item.location ? ` · ${item.location}` : ''}</p>
-                      </div>
-                      <p class="text-sm font-medium text-slate-500 dark:text-slate-400">${item.start} – ${item.end}</p>
-                    </div>
-                  </button>
-                  <div class="hidden px-4 pb-2 pt-4 text-sm text-slate-600 dark:text-slate-300" id="${detailId}">
-                    <ul class="space-y-2">
-                      ${item.bullets
-                        .map(
-                          (bullet) =>
-                            `<li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-slate-400 dark:bg-slate-500"></span><span>${bullet}</span></li>`
-                        )
-                        .join('')}
-                    </ul>
+          const getYear = (label) => {
+            if (!label) return null;
+            const match = String(label).match(/(20\\d{2})/);
+            return match ? parseInt(match[1], 10) : null;
+          };
+
+          const grouped = {};
+          data.experience.forEach((item, index) => {
+            const year = getYear(item.start) || getYear(item.end) || 0;
+            if (!grouped[year]) grouped[year] = [];
+            grouped[year].push({ item, index });
+          });
+
+          const years = Object.keys(grouped)
+            .map((y) => parseInt(y, 10))
+            .sort((a, b) => b - a);
+
+          timelineEl.innerHTML = years
+            .map((year) => {
+              const header =
+                year > 0
+                  ? `
+                <div class="relative ml-6 pb-4">
+                  <div class="absolute -left-10 top-1 flex h-7 min-w-[2.5rem] items-center justify-center rounded-full bg-slate-900 px-2 text-xs font-semibold text-white shadow-sm dark:bg-slate-100 dark:text-slate-900">
+                    ${year}
                   </div>
-                </article>
-              `;
+                </div>
+              `
+                  : '';
+
+              const entries = grouped[year]
+                .map(({ item, index }) => {
+                  const detailId = \`experience-details-\${index}\`;
+                  return `
+                    <article class="relative ml-6 pb-10">
+                      <span class="absolute -left-8 top-2 flex h-4 w-4 items-center justify-center rounded-full border-2 border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900"></span>
+                      <button
+                        class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-4 text-left shadow-sm transition hover:border-slate-300 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-slate-600 dark:focus-visible:outline-slate-700"
+                        aria-expanded="false"
+                        aria-controls="${detailId}"
+                        data-experience-toggle="${detailId}"
+                      >
+                        <div class="flex flex-wrap items-baseline justify-between gap-2">
+                          <div>
+                            <h3 class="text-lg font-semibold text-slate-900 dark:text-white">${item.role}</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">${item.organization}${item.location ? ` · ${item.location}` : ''}</p>
+                          </div>
+                          <p class="text-sm font-medium text-slate-500 dark:text-slate-400">${item.start} – ${item.end}</p>
+                        </div>
+                      </button>
+                      <div class="hidden px-4 pb-2 pt-4 text-sm text-slate-600 dark:text-slate-300" id="${detailId}">
+                        <ul class="space-y-2">
+                          ${item.bullets
+                            .map(
+                              (bullet) =>
+                                `<li class="flex gap-3"><span class="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-slate-400 dark:bg-slate-500"></span><span>${bullet}</span></li>`
+                            )
+                            .join('')}
+                        </ul>
+                      </div>
+                    </article>
+                  `;
+                })
+                .join('');
+
+              return header + entries;
             })
             .join('');
         }
